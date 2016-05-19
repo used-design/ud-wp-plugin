@@ -68,8 +68,8 @@ class UsedDesign {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'usedDesign';
-		$this->version = '0.0.1';
+		$this->plugin_name = 'used-design';
+		$this->version = '0.1.6';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -120,12 +120,15 @@ class UsedDesign {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/UsedDesignPublic.php';
 
 
+		/**
+		 * Plugin Updater
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/UsedDesignUpdater.php';
 
 		/**
 		 * Admin section options page
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/usedDesignPluginOptionsPage.php';
-
 
 		/**
 		 * Public Offer Gridview Display
@@ -168,6 +171,13 @@ class UsedDesign {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'loadAdminOptions' );
+
+		$updater = new UsedDesignUpdater( __FILE__ );
+		$this->loader->add_action( 'admin_init', $updater, 'set_plugin_properties' );
+
+		$this->loader->add_filter( 'pre_set_site_transient_update_plugins', $updater, 'modify_transient', 10, 1 );
+		$this->loader->add_filter( 'plugins_api', $updater, 'plugin_popup', 10, 3 );
+		$this->loader->add_filter( 'upgrader_post_install', $updater, 'after_install', 10, 3 );
 
 	}
 

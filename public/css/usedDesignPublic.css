@@ -3059,6 +3059,9 @@
   color: #333;
   font-size: 15px;
   font-weight: 500;
+  text-transform: initial;
+  letter-spacing: initial;
+  line-height: 1em;
 }
 .usedDesignBootstrap .offersGrid .offerGridItem .wrapper-footer h4 {
   margin-right: 75px;
