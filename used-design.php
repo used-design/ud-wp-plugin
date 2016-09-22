@@ -10,7 +10,7 @@
  * Plugin Name:       used-design
  * Plugin URI:        https://github.com/used-design/ud-wp-plugin
  * Description:       Zeigen Sie Ihre used-design Angebote auf Ihrer eigenen Webseite
- * Version:           0.1.6
+ * Version:           0.1.9
  * Author:            used-design
  * Author URI:        https://www.used-design.com/
  * License:           GPL-2.0+

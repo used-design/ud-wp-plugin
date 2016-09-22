@@ -69,7 +69,7 @@ class UsedDesign {
 	public function __construct() {
 
 		$this->plugin_name = 'used-design';
-		$this->version = '0.1.6';
+		$this->version = '0.1.9';
 
 		$this->load_dependencies();
 		$this->set_locale();
