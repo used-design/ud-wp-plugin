@@ -45,7 +45,7 @@ function used_design_offers_grid_func($atts)
                                         <div class="wrapper-footer">
                                             <div class="clearfix">
                                                 <h4><?php echo (strlen($offer['headline']) > 20) ? substr($offer['headline'], 0, 20) . '...' : $offer['headline']; ?></h4>
-                                                <span class="price">€ <?php echo $offer['price']; ?>,-</span>
+                                                <span class="price">€ <?php echo number_format($offer['price'], 0, ',', '.'); ?>,-</span>
                                             </div>
                                             <div class="clearfix">
                                                 <span class="manufacturer"><?php echo $offer['manufacturer_name']; ?></span>
