@@ -60,6 +60,9 @@ function used_design_offers_grid_func($atts)
                     }
                 echo '</div>'; // END .row
             }
+            else { ?>
+                <div class="well">Es wurde kein Angebot mit den von Ihnen angegebenen Suchparametern gefunden</div>
+            <?php }
         }
     echo '</div>'; // END .usedDesignBootstrap
 

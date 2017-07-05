@@ -122,23 +122,47 @@ class UsedDesignPublic {
 	static function getOffers($atts)
 	{
 		$attributes = shortcode_atts( array(
-			'cat-main' => false,
-			'manufacturer' => false,
+            'cat-main' => false,
+			'cat-sub' => false,
+            'manufacturer' => false,
+            's' => false,
+            'global' => false,
+			'show' => false,
 		), $atts );
 
 		$apiToken = get_option('useddesign_api_token');
-        $url = USEDDESIGN_API_URL . '/offer?api_token=' . $apiToken . '&status=online';
+        $url = ($attributes['global']) ? USEDDESIGN_API_URL . '/offer/global?api_token=' . $apiToken . '&status=online' : USEDDESIGN_API_URL . '/offer?api_token=' . $apiToken . '&status=online';
 
         // Filter main category
         if ($attributes['cat-main'])
         {
-        	$url .= '&cat-main=' . $attributes['cat-main'];
+            $url .= '&cat-main=' . $attributes['cat-main'];
+        }
+
+        // Filter sub category
+        if ($attributes['cat-sub'])
+        {
+        	$url .= '&cat-sub=' . $attributes['cat-sub'];
         }
 
         // Filter manufacturer
         if ($attributes['manufacturer'])
         {
-        	$url .= '&manufacturer=' . $attributes['manufacturer'];
+            $url .= '&manufacturer=' . $attributes['manufacturer'];
+        }
+
+
+        // Free type search
+        if ($attributes['s'])
+        {
+            $url .= '&s=' . urlencode($attributes['s']);
+        }
+
+
+        // limit number of restuls
+        if ($attributes['show'])
+        {
+            $url .= '&show=' . $attributes['show'];
         }
 
         $ch = curl_init();
