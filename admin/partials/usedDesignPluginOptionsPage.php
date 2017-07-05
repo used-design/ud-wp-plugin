@@ -77,11 +77,15 @@ function used_design_plugin_options_page() {
         <br>
         <h4>Angebote filtern</h4>
         <p>
-            Zusätzlich können Sie Ihre Angebote nach Hauptkategorie und/oder Hersteller filtern. <br>
+            Zusätzlich können Sie Ihre Angebote filtern. <br>
             Fügen Sie dazu dem Shortcode die entsprechenden Parameter hinzu: <br>
             Hauptkategorie = cat-main <br>
+            Unterkategorie = cat-sub <br>
             Hersteller = manufacturer <br>
+            Freitextsuche = s <br>
+            Max Anzahl gefundene Angebote = show <br>
             <pre>[used_design_offers_grid cat-main="1" manufacturer="31"]</pre>
+            <pre>[used_design_offers_grid cat-main="4" s="Lounge Chair" show="9"]</pre>
         </p>
 
         <br>
