@@ -122,6 +122,7 @@ class UsedDesignPublic {
 	static function getOffers($atts)
 	{
 		$attributes = shortcode_atts( array(
+            'seller' => false,
             'cat-main' => false,
 			'cat-sub' => false,
             'manufacturer' => false,
@@ -132,6 +133,12 @@ class UsedDesignPublic {
 
 		$apiToken = get_option('useddesign_api_token');
         $url = ($attributes['global']) ? USEDDESIGN_API_URL . '/offer/global?api_token=' . $apiToken . '&status=online' : USEDDESIGN_API_URL . '/offer?api_token=' . $apiToken . '&status=online';
+
+        // Filter by seller
+        if ($attributes['seller'])
+        {
+            $url .= '&seller=' . $attributes['seller'];
+        }
 
         // Filter main category
         if ($attributes['cat-main'])
