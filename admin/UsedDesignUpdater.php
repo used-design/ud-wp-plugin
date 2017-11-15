@@ -123,7 +123,7 @@ class UsedDesignUpdater {
 					'name'				=> $this->plugin["Name"],
 					'slug'				=> $this->basename,
 					'requires'					=> '4.0',
-					'tested'						=> '4.5.2',
+					'tested'						=> '4.8.3',
 					/*'rating'						=> '100.0',
 					'num_ratings'				=> '12345',
 					'downloaded'				=> '12345',*/
