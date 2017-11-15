@@ -19,6 +19,8 @@ function used_design_offers_grid_func($atts)
     ), $atts );
 
     $offers = UsedDesignPublic::getOffers($atts);
+    $pagename = str_replace(['http://', 'https://'], '', get_bloginfo('url'));
+    $utmData = '?utm_source=' . urlencode($pagename) . '&utm_medium=UD-WP-PlugIn';
     ob_start();
 
     echo '<div class="usedDesignBootstrap">';
@@ -36,7 +38,7 @@ function used_design_offers_grid_func($atts)
                 echo '<div class="row offersGrid">';
                     foreach ($offers['data'] as $offer) { ?>
                         <div class="col-xs-12 <?php print ($attributes['col-max'] >= 2) ? 'col-sm-6' : ''; ?> <?php print ($attributes['col-max'] >= 3) ? 'col-md-4' : ''; ?> <?php print ($attributes['col-max'] >= 4) ? 'col-lg-3' : ''; ?> offerGridItem">
-                            <a href="<?php echo $offer['public_link']; ?>" target="_blank" class="plain">
+                            <a href="<?php echo $offer['public_link'] . $utmData; ?>" target="_blank" class="plain">
                                 <div class="wrapper-outer">
                                     <div class="wrapper-inner">
                                         <div class="wrapper-img">
