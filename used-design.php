@@ -10,7 +10,7 @@
  * Plugin Name:       used-design
  * Plugin URI:        https://github.com/used-design/ud-wp-plugin
  * Description:       Zeigen Sie Ihre used-design Angebote auf Ihrer eigenen Webseite
- * Version:           0.2.3
+ * Version:           0.2.4
  * Author:            used-design
  * Author URI:        https://www.used-design.com/
  * License:           GPL-2.0+
@@ -70,3 +70,16 @@ function run_plugin_name() {
 	$plugin->run();
 }
 run_plugin_name();
+
+
+/**
+ * Display Settings link in plugin list view
+ */
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links' );
+
+function add_action_links ( $links ) {
+    $mylinks = array(
+        '<a href="' . admin_url( 'options-general.php?page=useddesign-options' ) . '">Settings</a>',
+    );
+    return array_merge( $links, $mylinks );
+}
